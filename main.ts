@@ -72,8 +72,11 @@ Deno.serve(async (req) => {
     return new Response("LINE Bot is running with Deno KV!");
   }
 
+  const pathname = new URL(req.url).pathname;
+
   // Webhookリクエスト (POST)
-  if (req.method === "POST" && new URL(req.url).pathname === "/webhook") {
+  // /webhook でもルート(/)でも受け付けるように変更
+  if (req.method === "POST" && (pathname === "/webhook" || pathname === "/")) {
     const signature = req.headers.get("x-line-signature");
     const body = await req.text();
 
