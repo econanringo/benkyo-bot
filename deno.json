@@ -1,5 +1,6 @@
 {
   "tasks": {
-    "dev": "deno run --allow-net --allow-env --allow-read --unstable-cron main.ts"
-  }
+    "dev": "deno run --allow-net --allow-env --allow-read --unstable-kv --unstable-cron main.ts"
+  },
+  "unstable": ["kv", "cron"]
 }
